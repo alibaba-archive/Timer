@@ -22,6 +22,13 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Set up Background
+        let colors = Colors()
+        var backgroundLayer = colors.gradientLayer
+        backgroundLayer.frame = self.view.frame
+        view.backgroundColor = UIColor.clearColor()
+        view.layer.insertSublayer(backgroundLayer, atIndex: 0)
+        
         // Polish Time Font
         var timeFeatureSettings = [
                 [
@@ -47,6 +54,10 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
     }
     
     func handlePan(panGestureRecognizer: UIPanGestureRecognizer) {
